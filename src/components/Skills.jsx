@@ -1,25 +1,54 @@
 import React, { useState } from 'react';
 
 function Skills() {
-  const [active, setActive] = useState(null);
+  const [activeCategory, setActiveCategory] = useState('programmer');
   
-  const programmer = [
-    { name: 'HTML + CSS', level: 90 },
-    { name: 'JavaScript', level: 85 },
-    { name: 'React.js', level: 80 },
-    { name: 'Laravel', level: 75 },
-    { name: 'Figma', level: 70 },
-    { name: 'Git & GitHub', level: 85 },
-    { name: 'Flutter', level: 65 }
+  // Data untuk programmer
+  const languages = [
+    { name: 'JavaScript' },
+    { name: 'PHP' },
+    { name: 'Dart' },
+    { name: 'HTML' }
   ];
   
-  const illustrator = [
-    { name: 'Menggambar Digital', level: 85 },
-    { name: 'Membuat Komik', level: 80 },
-    { name: 'Desain Karakter', level: 75 },
-    { name: 'Keychain Custom', level: 70 },
-    { name: 'Stiker', level: 85 },
-    { name: 'Webtoon', level: 75 }
+  const frameworks = [
+    { name: 'React' },
+    { name: 'Laravel' },
+    { name: 'Flutter' },
+    { name: 'Node.js' },
+    { name: 'Express' },
+    { name: 'Tailwind CSS' },
+    { name: 'Bootstrap' },
+    { name: 'CSS' }
+  ];
+  
+  const databases = [
+    { name: 'MySQL' },
+    { name: 'PostgreSQL' },
+    { name: 'MongoDB' }
+  ];
+  
+  const tools = [
+    { name: 'Figma' },
+    { name: 'Postman' },
+    { name: 'VS Code' }
+  ];
+  
+  // Data untuk illustrator
+  const designTools = [
+    { name: 'Illustrator' },
+    { name: 'IbistPaint X' },
+    { name: 'Clip Studio Paint' },
+    { name: 'Canva' }
+  ];
+  
+  const artSkills = [
+    { name: 'Menggambar Digital' },
+    { name: 'Membuat Komik' },
+    { name: 'Desain Karakter' },
+    { name: 'Keychain Custom' },
+    { name: 'Stiker' },
+    { name: 'Webtoon' }
   ];
 
   return (
@@ -33,72 +62,120 @@ function Skills() {
         
         <div style={styles.header}>
           <button 
-            onClick={() => setActive(active === 'programmer' ? null : 'programmer')}
+            onClick={() => setActiveCategory('programmer')}
             style={{
               ...styles.btn,
-              ...(active === 'programmer' && styles.btnActive),
-              borderColor: active === 'programmer' ? '#3b82f6' : '#e2e8f0'
+              ...(activeCategory === 'programmer' && styles.btnActive),
+              borderColor: activeCategory === 'programmer' ? '#3b82f6' : '#e2e8f0'
             }}
           >
-            <span style={styles.btnDot}></span>
+            <span style={{...styles.btnDot, background: '#3b82f6'}}></span>
             Programmer
-            <span style={styles.btnArrow}>{active === 'programmer' ? '−' : '+'}</span>
           </button>
           
           <button 
-            onClick={() => setActive(active === 'illustrator' ? null : 'illustrator')}
+            onClick={() => setActiveCategory('illustrator')}
             style={{
               ...styles.btn,
-              ...(active === 'illustrator' && styles.btnActive),
-              borderColor: active === 'illustrator' ? '#8b5cf6' : '#e2e8f0'
+              ...(activeCategory === 'illustrator' && styles.btnActive),
+              borderColor: activeCategory === 'illustrator' ? '#8b5cf6' : '#e2e8f0'
             }}
           >
-            <span style={styles.btnDot}></span>
+            <span style={{...styles.btnDot, background: '#8b5cf6'}}></span>
             Ilustrator
-            <span style={styles.btnArrow}>{active === 'illustrator' ? '−' : '+'}</span>
           </button>
         </div>
         
-        {active === 'programmer' && (
+        {/* Programmer Skills */}
+        {activeCategory === 'programmer' && (
           <div style={styles.skillContainer}>
-            {programmer.map((skill, i) => (
-              <div key={i} style={{...styles.skillItem, animationDelay: `${i * 0.05}s`}}>
-                <div style={styles.skillHeader}>
-                  <span style={styles.skillName}>{skill.name}</span>
-                  <span style={styles.skillPercent}>{skill.level}%</span>
-                </div>
-                <div style={styles.barContainer}>
-                  <div style={{...styles.barFill, width: `${skill.level}%`}} />
-                </div>
+            {/* Languages */}
+            <div style={styles.categoryGroup}>
+              <h3 style={styles.categoryTitle}>Languages</h3>
+              <div style={styles.skillGrid}>
+                {languages.map((skill, i) => (
+                  <div key={i} style={styles.skillCard}>
+                    <span style={styles.skillName}>{skill.name}</span>
+                  </div>
+                ))}
               </div>
-            ))}
+            </div>
+            
+            {/* Frameworks & Libraries */}
+            <div style={styles.categoryGroup}>
+              <h3 style={styles.categoryTitle}>Frameworks & Libraries</h3>
+              <div style={styles.skillGrid}>
+                {frameworks.map((skill, i) => (
+                  <div key={i} style={styles.skillCard}>
+                    <span style={styles.skillName}>{skill.name}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+            
+            {/* Databases */}
+            <div style={styles.categoryGroup}>
+              <h3 style={styles.categoryTitle}>Databases</h3>
+              <div style={styles.skillGrid}>
+                {databases.map((skill, i) => (
+                  <div key={i} style={styles.skillCard}>
+                    <span style={styles.skillName}>{skill.name}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+            
+            {/* Tools & Platforms */}
+            <div style={styles.categoryGroup}>
+              <h3 style={styles.categoryTitle}>Tools & Platforms</h3>
+              <div style={styles.skillGrid}>
+                {tools.map((skill, i) => (
+                  <div key={i} style={styles.skillCard}>
+                    <span style={styles.skillName}>{skill.name}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         )}
         
-        {active === 'illustrator' && (
+        {/* Illustrator Skills */}
+        {activeCategory === 'illustrator' && (
           <div style={styles.skillContainer}>
-            {illustrator.map((skill, i) => (
-              <div key={i} style={{...styles.skillItem, animationDelay: `${i * 0.05}s`}}>
-                <div style={styles.skillHeader}>
-                  <span style={styles.skillName}>{skill.name}</span>
-                  <span style={styles.skillPercent}>{skill.level}%</span>
-                </div>
-                <div style={styles.barContainer}>
-                  <div style={{...styles.barFill, width: `${skill.level}%`, background: 'linear-gradient(90deg, #8b5cf6, #a78bfa)'}} />
-                </div>
+            {/* Design Tools */}
+            <div style={styles.categoryGroup}>
+              <h3 style={styles.categoryTitle}>Design Tools</h3>
+              <div style={styles.skillGrid}>
+                {designTools.map((skill, i) => (
+                  <div key={i} style={styles.skillCard}>
+                    <span style={styles.skillName}>{skill.name}</span>
+                  </div>
+                ))}
               </div>
-            ))}
+            </div>
+            
+            {/* Art Skills */}
+            <div style={styles.categoryGroup}>
+              <h3 style={styles.categoryTitle}>Art Skills</h3>
+              <div style={styles.skillGrid}>
+                {artSkills.map((skill, i) => (
+                  <div key={i} style={styles.skillCard}>
+                    <span style={styles.skillName}>{skill.name}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         )}
         
-        <p style={styles.footer}>click to expand</p>
+        <p style={styles.footer}>click to switch category</p>
       </div>
       
       <style>{`
-        @keyframes slideDown {
+        @keyframes fadeIn {
           from {
             opacity: 0;
-            transform: translateY(-15px);
+            transform: translateY(10px);
           }
           to {
             opacity: 1;
@@ -116,7 +193,7 @@ const styles = {
     padding: '70px 0'
   },
   container: {
-    maxWidth: '700px',
+    maxWidth: '900px',
     margin: '0 auto',
     padding: '0 24px'
   },
@@ -160,59 +237,53 @@ const styles = {
   btnActive: {
     background: '#f8fafc',
     color: '#1e293b',
-    borderWidth: '1.5px'
+    borderWidth: '1.5px',
+    boxShadow: '0 2px 4px rgba(0,0,0,0.05)'
   },
   btnDot: {
-    width: '6px',
-    height: '6px',
+    width: '8px',
+    height: '8px',
     borderRadius: '50%',
-    background: '#3b82f6',
     display: 'inline-block'
-  },
-  btnArrow: {
-    fontSize: '1.1rem',
-    fontWeight: 400,
-    marginLeft: '4px'
   },
   skillContainer: {
     background: '#f8fafc',
     borderRadius: '20px',
-    padding: '28px',
+    padding: '32px',
     marginTop: '8px',
-    animation: 'slideDown 0.3s ease'
+    animation: 'fadeIn 0.3s ease'
   },
-  skillItem: {
-    marginBottom: '22px',
-    opacity: 0,
-    animation: 'slideDown 0.3s ease forwards'
+  categoryGroup: {
+    marginBottom: '32px'
   },
-  skillHeader: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginBottom: '8px'
+  categoryTitle: {
+    fontSize: '1rem',
+    fontWeight: 600,
+    color: '#3b82f6',
+    marginBottom: '16px',
+    paddingBottom: '8px',
+    borderBottom: '2px solid #e2e8f0',
+    textTransform: 'uppercase',
+    letterSpacing: '0.5px'
+  },
+  skillGrid: {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(auto-fill, minmax(120px, 1fr))',
+    gap: '12px'
+  },
+  skillCard: {
+    background: '#ffffff',
+    padding: '10px 16px',
+    borderRadius: '10px',
+    border: '1px solid #e2e8f0',
+    transition: 'all 0.2s ease',
+    cursor: 'default',
+    textAlign: 'center'
   },
   skillName: {
     color: '#334155',
-    fontSize: '0.9rem',
+    fontSize: '0.85rem',
     fontWeight: 500
-  },
-  skillPercent: {
-    color: '#94a3b8',
-    fontSize: '0.75rem',
-    fontWeight: 500
-  },
-  barContainer: {
-    background: '#e2e8f0',
-    height: '6px',
-    borderRadius: '10px',
-    overflow: 'hidden'
-  },
-  barFill: {
-    height: '100%',
-    borderRadius: '10px',
-    background: 'linear-gradient(90deg, #3b82f6, #60a5fa)',
-    transition: 'width 0.5s cubic-bezier(0.4, 0, 0.2, 1)'
   },
   footer: {
     textAlign: 'center',
@@ -223,5 +294,16 @@ const styles = {
     textTransform: 'uppercase'
   }
 };
+
+// Hover effect untuk skillCard
+const styleSheet = document.createElement("style");
+styleSheet.textContent = `
+  .skill-card-hover:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    border-color: #3b82f6;
+  }
+`;
+document.head.appendChild(styleSheet);
 
 export default Skills;
