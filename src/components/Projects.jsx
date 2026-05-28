@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './Projects.css'; // Import file CSS terpisah
 
 // Import gambar untuk programmer projects
 import p1 from '../assets/P1.png';
@@ -147,7 +148,7 @@ function Projects() {
             </div>
           </div>
           
-          {/* Ilustrator - SEKARANG PAKAI GAMBAR ASLI */}
+          {/* Ilustrator */}
           <div>
             <h3 style={{ fontSize: '1.2rem', marginBottom: '20px', color: '#8b5cf6', textAlign: 'center' }}>Ilustrator</h3>
             <div style={styles.gridContainer}>
@@ -406,51 +407,5 @@ const styles = {
     transition: 'background 0.2s ease'
   }
 };
-
-// Animations and hover effects
-const styleSheet = document.createElement("style");
-styleSheet.textContent = `
-  @keyframes modalFadeIn {
-    from {
-      opacity: 0;
-      transform: scale(0.95);
-    }
-    to {
-      opacity: 1;
-      transform: scale(1);
-    }
-  }
-  
-  .project-card-hover:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-  }
-  
-  .image-wrapper-hover:hover img {
-    transform: scale(1.05);
-  }
-  
-  .image-wrapper-hover:hover .zoom-icon {
-    opacity: 1;
-  }
-  
-  .project-link-hover:hover {
-    transform: translateX(5px);
-  }
-  
-  .modal-close-hover:hover {
-    background: rgba(0, 0, 0, 0.9);
-    transform: rotate(90deg);
-  }
-  
-  .modal-link-hover:hover {
-    background: #2563eb;
-  }
-  
-  .modal-content {
-    animation: modalFadeIn 0.3s ease;
-  }
-`;
-document.head.appendChild(styleSheet);
 
 export default Projects;
