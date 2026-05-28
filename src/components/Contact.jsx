@@ -14,114 +14,159 @@ function Contact() {
   return (
     <section id="contact" style={styles.section}>
       <div style={styles.container}>
-        <div style={styles.header}>
-          <span style={styles.label}>04.</span>
-          <h2 style={styles.title}>Get in touch</h2>
+        <div style={styles.left}>
+          <div style={styles.stickyContent}>
+            <span style={styles.label}>Social</span>
+            <h2 style={styles.title}>Connect<br />with me</h2>
+            <div style={styles.line}></div>
+          </div>
         </div>
-        
-        <div style={styles.content}>
-          {socials.map((social, i) => (
-            <a
-              key={i}
-              href={social.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{
-                ...styles.link,
-                ...(hovered === i && styles.linkHover)
-              }}
-              onMouseEnter={() => setHovered(i)}
-              onMouseLeave={() => setHovered(null)}
-            >
-              <span style={styles.linkNumber}>0{i + 1}.</span>
-              <span style={styles.linkName}>{social.name}</span>
-              <span style={styles.linkArrow}>→</span>
-            </a>
-          ))}
-        </div>
-        
-        <div style={styles.footer}>
-          <p style={styles.quote}>"diam bukan berarti limbad"</p>
+
+        <div style={styles.right}>
+          <div style={styles.links}>
+            {socials.map((social, i) => (
+              <a
+                key={i}
+                href={social.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{
+                  ...styles.link,
+                  ...(hovered === i && styles.linkHover)
+                }}
+                onMouseEnter={() => setHovered(i)}
+                onMouseLeave={() => setHovered(null)}
+              >
+                <span style={styles.linkBg}>{(i + 1).toString().padStart(2, '0')}</span>
+                <span style={styles.linkText}>{social.name}</span>
+                <span style={styles.linkArrow}>↗</span>
+              </a>
+            ))}
+          </div>
+          
+          <div style={styles.footer}>
+            <p style={styles.quote}>"diam bukan berarti limbad"</p>
+          </div>
         </div>
       </div>
+
+      <style>{`
+        @keyframes slideUp {
+          from {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        
+        .link-item {
+          animation: slideUp 0.6s ease forwards;
+          opacity: 0;
+        }
+        
+        .link-item:nth-child(1) { animation-delay: 0.1s; }
+        .link-item:nth-child(2) { animation-delay: 0.2s; }
+        .link-item:nth-child(3) { animation-delay: 0.3s; }
+        .link-item:nth-child(4) { animation-delay: 0.4s; }
+        .link-item:nth-child(5) { animation-delay: 0.5s; }
+      `}</style>
     </section>
   );
 }
 
 const styles = {
   section: {
-    padding: '100px 0',
-    background: '#ffffff'
+    padding: '120px 0',
+    background: '#fff'
   },
   container: {
-    maxWidth: '700px',
+    maxWidth: '1200px',
     margin: '0 auto',
-    padding: '0 24px'
+    padding: '0 40px',
+    display: 'grid',
+    gridTemplateColumns: '1fr 1.5fr',
+    gap: '60px'
   },
-  header: {
-    display: 'flex',
-    alignItems: 'center',
-    gap: '12px',
-    marginBottom: '48px'
+  left: {
+    position: 'relative'
+  },
+  stickyContent: {
+    position: 'sticky',
+    top: '100px'
   },
   label: {
-    fontSize: '0.8rem',
-    color: '#666',
-    letterSpacing: '1px'
+    fontSize: '0.7rem',
+    color: '#999',
+    textTransform: 'uppercase',
+    letterSpacing: '3px',
+    display: 'block',
+    marginBottom: '16px'
   },
   title: {
-    fontSize: '1.2rem',
-    fontWeight: '400',
-    color: '#111',
-    letterSpacing: '0.5px',
-    margin: 0
+    fontSize: '2.8rem',
+    fontWeight: '500',
+    color: '#1a1a1a',
+    margin: '0 0 24px 0',
+    lineHeight: '1.2',
+    letterSpacing: '-1px'
   },
-  content: {
+  line: {
+    width: '40px',
+    height: '2px',
+    background: '#e0e0e0'
+  },
+  right: {
     display: 'flex',
     flexDirection: 'column',
-    gap: '20px',
-    marginBottom: '80px'
+    gap: '60px'
+  },
+  links: {
+    display: 'flex',
+    flexDirection: 'column'
   },
   link: {
     display: 'flex',
     alignItems: 'center',
-    gap: '16px',
+    gap: '20px',
     textDecoration: 'none',
-    color: '#333',
-    padding: '12px 0',
-    borderBottom: '1px solid #eee',
-    transition: 'all 0.2s ease'
+    padding: '24px 0',
+    borderBottom: '1px solid #f0f0f0',
+    transition: 'all 0.3s ease',
+    cursor: 'pointer'
   },
   linkHover: {
-    color: '#000',
-    borderBottomColor: '#ccc',
-    paddingLeft: '8px'
+    paddingLeft: '20px',
+    borderBottomColor: '#d0d0d0'
   },
-  linkNumber: {
-    fontSize: '0.7rem',
-    color: '#999',
-    width: '30px'
+  linkBg: {
+    fontSize: '0.8rem',
+    color: '#ccc',
+    minWidth: '40px',
+    fontFamily: 'monospace'
   },
-  linkName: {
-    fontSize: '0.9rem',
-    flex: 1
+  linkText: {
+    fontSize: '1.1rem',
+    color: '#333',
+    flex: 1,
+    fontWeight: '400',
+    letterSpacing: '-0.2px'
   },
   linkArrow: {
-    fontSize: '0.8rem',
-    opacity: 0,
-    transition: '0.2s',
-    ...(hovered && { opacity: 1 })
+    fontSize: '0.9rem',
+    color: '#ddd',
+    transition: 'transform 0.3s ease'
   },
   footer: {
-    textAlign: 'center',
-    paddingTop: '40px'
+    textAlign: 'right'
   },
   quote: {
-    fontSize: '0.8rem',
+    fontSize: '0.85rem',
     color: '#aaa',
     fontStyle: 'italic',
-    margin: 0,
-    letterSpacing: '0.3px'
+    margin: 0
   }
 };
 

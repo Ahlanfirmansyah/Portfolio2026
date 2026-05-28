@@ -99,6 +99,7 @@ function Navbar() {
             <li><a href="#skills" onClick={(e) => { e.preventDefault(); scrollToSection('skills'); }} style={styles.link}>skill</a></li>
             <li><a href="#projects" onClick={(e) => { e.preventDefault(); scrollToSection('projects'); }} style={styles.link}>proyek</a></li>
             <li><a href="#contact" onClick={(e) => { e.preventDefault(); scrollToSection('contact'); }} style={styles.link}>kontak</a></li>
+            <li><a href="#certificate" onClick={(e) => { e.preventDefault(); scrollToSection('certificate'); }} style={styles.link}>sertifikat</a></li>
           </ul>
         ) : (
           isOpen && (
@@ -108,6 +109,7 @@ function Navbar() {
               <li><a href="#skills" onClick={(e) => { e.preventDefault(); scrollToSection('skills'); }} style={styles.link}>skill</a></li>
               <li><a href="#projects" onClick={(e) => { e.preventDefault(); scrollToSection('projects'); }} style={styles.link}>proyek</a></li>
               <li><a href="#contact" onClick={(e) => { e.preventDefault(); scrollToSection('contact'); }} style={styles.link}>kontak</a></li>
+              <li><a href="#certificate" onClick={(e) => { e.preventDefault(); scrollToSection('certificate'); }} style={styles.link}>sertifikat</a></li>
             </ul>
           )
         )}
