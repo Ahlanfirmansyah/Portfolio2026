@@ -6,10 +6,10 @@ import p1 from '../assets/P1.png';
 import p2 from '../assets/P2.png';
 import p3 from '../assets/P3.png';
 import p4 from '../assets/P4.png';
-import i1 from '../assets/i1.jpeg';
-import i2 from '../assets/i2.jpeg';
-import i3 from '../assets/i3.jpeg';
-import i4 from '../assets/i4.jpeg';
+import i1 from '../assets/ilu1.jpeg';
+import i2 from '../assets/ilu2.jpeg';
+import i3 from '../assets/ilu3.jpeg';
+import i4 from '../assets/ilu4.jpeg';
 
 const programmerProjects = [
   { 
