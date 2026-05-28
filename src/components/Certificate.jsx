@@ -264,7 +264,7 @@ const Certificate = () => {
         `}
       </style>
       
-      <section id="certificates" className="certificates-section" style={styles.certificatesSection}>
+      <section id="certificate" style={styles.section}> 
         <div style={styles.container}>
           <h2 style={styles.sectionTitle}>
             Sertifikat
